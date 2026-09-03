@@ -1,0 +1,15 @@
+def get_cats_info(path):
+    try:
+        cats_list = []
+        with open(path, encoding="utf-8") as file:
+            for line in file:
+                clean_line = line.strip()
+                parts = clean_line.split(",")
+                cat = {"id": parts[0], "name": parts[1], "age": parts[2]}
+                cats_list.append(cat)
+        return cats_list
+    except FileNotFoundError:
+        print("Файл не знайдено.")
+        return []
+cats_info = get_cats_info("cats_file.txt")
+print(cats_info)
